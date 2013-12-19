@@ -1,6 +1,6 @@
 = SBuild Adept Plugin
 
-This link:SBuild[http://sbuild.org] plugin integrates link:JBake[http://jbake.org] with SBuild.
+This SBuild plugin integrates http://jbake.org[JBake] with http://sbuild.tototec.de[SBuild].
 
 == Installation
 
@@ -20,7 +20,7 @@ You will find the built jar in the directory `org.sbuild.plugins.jbake/target`.
 
 == Configuration
 
-All configurable properties are documented via ScalaDoc. See file `JBake.scala`.
+All configurable properties are documented via ScalaDoc. See file link:org.sbuild.plugins.jbake/src/main/scala/org/sbuild/plugin/jbake/JBake.scala[`JBake.scala`].
 
 == Example
 
