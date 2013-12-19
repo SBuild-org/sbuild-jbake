@@ -22,3 +22,19 @@ You will find the built jar in the directory `org.sbuild.plugins.jbake/target`.
 
 All configurable properties are documented via ScalaDoc. See file `JBake.scala`.
 
+== Example
+
+Minimal example, which will generate a jbake site from `src/jbake` to `target/jbake`.
+
+[source,scala]
+----
+import de.tototec.sbuild._
+
+@classpath("org.sbuild.plugins.jbake.jar")
+class SBuild(implicit _project: Project) {
+
+  import org.sbuild.plugins.jbake._
+  Plugin[JBake]
+
+}
+
