@@ -1,0 +1,24 @@
+= SBuild Adept Plugin
+
+This SBuild plugin integrated JBake with SBuild.
+
+== Installation
+
+There is currently no release of this plugin. You need to build it by yourself.
+
+== Building from Source
+
+You need a recent version of SBuild.
+
+----
+git clone https://github.com/SBuild-org/jbake.git
+cd sbuild-sbuild-plugin/org.sbuild.plugins.jbake
+sbuild all
+----
+
+You will find the built jar in the directory `org.sbuild.plugins.jbake/target`.
+
+== Configuration
+
+All configurable properties are documented via ScalaDoc. See file `JBake.scala`.
+
