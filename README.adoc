@@ -1,6 +1,6 @@
 = SBuild Adept Plugin
 
-This SBuild plugin integrated JBake with SBuild.
+This link:SBuild[http://sbuild.org] plugin integrates link:JBake[http://jbake.org] with SBuild.
 
 == Installation
 
