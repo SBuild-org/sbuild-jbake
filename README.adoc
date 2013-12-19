@@ -20,7 +20,7 @@ You will find the built jar in the directory `org.sbuild.plugins.jbake/target`.
 
 == Configuration
 
-All configurable properties are documented via ScalaDoc. See file link:org.sbuild.plugins.jbake/src/main/scala/org/sbuild/plugin/jbake/JBake.scala[`JBake.scala`].
+All configurable properties are documented via ScalaDoc. See file link:org.sbuild.plugins.jbake/src/main/scala/org/sbuild/plugins/jbake/JBake.scala[`JBake.scala`].
 
 == Example
 
