@@ -5,7 +5,7 @@ import de.tototec.sbuild.ant.tasks._
 import de.tototec.sbuild._
 
 @version("0.7.1")
-@classpath("../../sbuild-plugin/org.sbuild.plugins.sbuildplugin/target/org.sbuild.plugins.sbuildplugin-0.1.0.9000.jar")
+@classpath("mvn:org.sbuild:org.sbuild.plugins.sbuildplugin:0.2.0")
 class SBuild(implicit _project: Project) {
 
   Plugin[org.sbuild.plugins.sbuildplugin.SBuildPlugin] configure { _.copy(
