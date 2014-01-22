@@ -30,8 +30,8 @@ Minimal example, which will generate a jbake site from `src/jbake` to `target/jb
 ----
 import de.tototec.sbuild._
 
-// Please note, SBuild 0.7.0 is not sufficient to use this plugin
-@version("0.7.0.9000")
+// Please note, SBuild 0.7.1 is not sufficient to use this plugin
+@version("0.7.1.9000")
 @classpath("org.sbuild.plugins.jbake.jar")
 class SBuild(implicit _project: Project) {
 
