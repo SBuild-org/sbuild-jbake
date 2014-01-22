@@ -11,9 +11,6 @@ import java.io.File
  * @param serveTargetName Name of the target that will run an embedded webserver to test the generated site.
  * @param sourceDir Directory containing the source files of the site.
  * @param targetDir Directory, where all generated files will be stored.
- * @param jbakeHome Directory of an locally JBake installation.
- *   If `[[scala.None$]]`, then no local installation will be used.
- *   Instead, a version specified by the `jbakeVersion` property will be downloaded and used.
  * @param jbakeVersion The JBake version used.
  *   See `[[JBakeVersion]]` for details.
  */
