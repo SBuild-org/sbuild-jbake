@@ -69,3 +69,8 @@ class SBuild(implicit _project: Project) {
 
 }
 
+== Changelog
+
+=== SBuild JBake Plugin 0.1.0 - 2014-01-24
+
+* Initial Release, compatible to SBuild 0.7.1.9000 (unreleased)
