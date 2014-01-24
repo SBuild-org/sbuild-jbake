@@ -1,4 +1,6 @@
 import de.tototec.sbuild._
+import de.tototec.sbuild.ant._
+import de.tototec.sbuild.ant.tasks._
 
 @version("0.7.1")
 @classpath(
@@ -10,6 +12,7 @@ class SBuild(implicit _project: Project) {
   val namespace = "org.sbuild.plugins.jbake"
   val version = "0.1.0"
   val url = "https://github.com/SBuild-org/sbuild-jbake"
+  val sourcesJar = s"target/${namespace}-${version}-sources.jar"
   val sourcesDir = "src/main/scala"
 
   import org.sbuild.plugins.mavendeploy._
@@ -33,7 +36,7 @@ class SBuild(implicit _project: Project) {
     )
   )}
 
-  Target(sourcesZip) dependsOn s"scan:${sourcesDir}" ~ "LICENSE.txt" exec { ctx: TargetContext =>
+  Target(sourcesJar) dependsOn s"scan:${sourcesDir}" ~ "LICENSE.txt" exec { ctx: TargetContext =>
     AntZip(destFile = ctx.targetFile.get, fileSets = Seq(
       AntFileSet(dir = Path(sourcesDir)),
       AntFileSet(file = Path("LICENSE.txt"))
