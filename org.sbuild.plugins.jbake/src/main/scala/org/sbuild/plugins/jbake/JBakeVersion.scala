@@ -37,8 +37,10 @@ object JBakeVersion {
     override def classpath(implicit p: Project): TargetRefs = s"${homeDir}/jbake-core.jar" ~ s"scan:${homeDir}/lib;regex=.*\.jar"
   }
   
-  /**
-   * JBake 2.2.0.
-   */
+  /** JBake 2.2.0 */
   val JBake_2_2_0 = Packaged("2.2.0", "http://jbake.org/files/jbake-2.2.0-bin.zip")
+
+  /** JBake 2.2.1 */
+  val JBake_2_2_1 = Packaged("2.2.1", "http://jbake.org/files/jbake-2.2.1-bin.zip")
+
 }

@@ -18,11 +18,15 @@ sbuild all
 
 You will find the built jar in the directory `org.sbuild.plugins.jbake/target`.
 
+== Requirement
+
+This plugin requires at least SBuild 0.7.1.9000.
+
 == Configuration
 
 All configurable properties are documented via ScalaDoc. See file link:org.sbuild.plugins.jbake/src/main/scala/org/sbuild/plugins/jbake/JBake.scala[`JBake.scala`].
 
-== Example
+== Examples
 
 Minimal example, which will generate a jbake site from `src/jbake` to `target/jbake`.
 
@@ -30,13 +34,31 @@ Minimal example, which will generate a jbake site from `src/jbake` to `target/jb
 ----
 import de.tototec.sbuild._
 
-// Please note, SBuild 0.7.1 is not sufficient to use this plugin
 @version("0.7.1.9000")
-@classpath("org.sbuild.plugins.jbake.jar")
+@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.0")
 class SBuild(implicit _project: Project) {
 
   import org.sbuild.plugins.jbake._
   Plugin[JBake]
+
+}
+
+Another example, using JBake 2.2.1 to generate a site from `src/website` to `target`.
+
+[source,scala]
+----
+import de.tototec.sbuild._
+
+@version("0.7.1.9000")
+@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.0")
+class SBuild(implicit _project: Project) {
+
+  import org.sbuild.plugins.jbake._
+  Plugin[JBake] configure { _.copy(
+    jbakeVersion = JBakeVersion.JBake_2_2_1,
+    sourceDir = Path("src/website"),
+    targetDir = Path("target")
+  )}
 
 }
 
