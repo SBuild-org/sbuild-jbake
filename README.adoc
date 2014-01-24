@@ -68,6 +68,7 @@ class SBuild(implicit _project: Project) {
   )}
 
 }
+----
 
 == Changelog
 
