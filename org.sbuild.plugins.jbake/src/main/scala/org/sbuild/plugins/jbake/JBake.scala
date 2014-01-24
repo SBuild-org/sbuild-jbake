@@ -19,5 +19,5 @@ case class JBake(
   serveTargetName: String,
   sourceDir: File,
   targetDir: File,
-  jbakeVersion: JBakeVersion = JBakeVersion.JBake_2_2_0)
+  jbakeVersion: JBakeVersion = JBakeVersion.JBake_2_2_1)
 
