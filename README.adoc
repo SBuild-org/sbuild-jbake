@@ -2,9 +2,16 @@
 
 This SBuild plugin integrates http://jbake.org[JBake] with http://sbuild.tototec.de[SBuild].
 
-== Installation
+== Download
 
-There is currently no release of this plugin. You need to build it by yourself.
+SBuild JBake Plugin can be downloaded from http://repo1.maven.org/maven2/org/sbuild/org.sbuild.plugins.jbake/[Maven Central].
+
+To include it in you SBuild buildfile use the `@classpath` annotation:
+
+[source,scala]
+----
+@classpath("mvn:org.sbuild:org.sbuild.plugin.jbake:0.1.0")
+----
 
 == Building from Source
 
@@ -18,7 +25,7 @@ sbuild all
 
 You will find the built jar in the directory `org.sbuild.plugins.jbake/target`.
 
-== Requirement
+== Requirements
 
 This plugin requires at least SBuild 0.7.1.9000.
 
