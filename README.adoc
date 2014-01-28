@@ -10,7 +10,7 @@ To include it in you SBuild buildfile use the `@classpath` annotation:
 
 [source,scala]
 ----
-@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.0")
+@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.1")
 ----
 
 == Building from Source
@@ -42,7 +42,7 @@ Minimal example, which will generate a jbake site from `src/jbake` to `target/jb
 import de.tototec.sbuild._
 
 @version("0.7.1.9000")
-@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.0")
+@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.1")
 class SBuild(implicit _project: Project) {
 
   import org.sbuild.plugins.jbake._
@@ -58,12 +58,12 @@ Another example, using JBake 2.2.1 to generate a site from `src/website` to `tar
 import de.tototec.sbuild._
 
 @version("0.7.1.9000")
-@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.0")
+@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.1")
 class SBuild(implicit _project: Project) {
 
   import org.sbuild.plugins.jbake._
   Plugin[JBake] configure { _.copy(
-    jbakeVersion = JBakeVersion.JBake_2_2_1,
+    jbakeVersion = JBakeVersion.Packaged("2.2.1"),
     sourceDir = Path("src/website"),
     targetDir = Path("target")
   )}
@@ -72,6 +72,13 @@ class SBuild(implicit _project: Project) {
 ----
 
 == Changelog
+
+=== SBuild JBake Plugin 0.1.1
+
+* Fixed JBake classpath resolution from ZIP files (wrong regex).
+* Added JBakeVersion.Classpath to allow customized JBake runtimes.
+* Added convenient contructor method for `JBakeVersion.Packaged` supporting
+  the typical use case: downloading and using JBake from `jbake.org`. 
 
 === SBuild JBake Plugin 0.1.0 - 2014-01-24
 
