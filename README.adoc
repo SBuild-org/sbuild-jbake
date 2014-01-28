@@ -73,7 +73,7 @@ class SBuild(implicit _project: Project) {
 
 == Changelog
 
-=== SBuild JBake Plugin 0.1.1
+=== SBuild JBake Plugin 0.1.1 - 2014-01-28
 
 * Fixed JBake classpath resolution from ZIP files (wrong regex).
 * Added JBakeVersion.Classpath to allow customized JBake runtimes.
