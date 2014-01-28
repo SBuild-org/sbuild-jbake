@@ -26,7 +26,7 @@ object JBakeVersion {
    *  @param url The URL to the package. This parameter supports also any [[TargetRef.name]].
    */
   case class Packaged(version: String, url: String) extends JBakeVersion {
-    override def classpath(implicit p: Project): TargetRefs = s"zip:file=jbake-${version}/jbake-core.jar;archive=${url}" ~ s"zip:regex=jbake-${version}/lib/.*\\\\.jar;archive=${url}"
+    override def classpath(implicit p: Project): TargetRefs = s"zip:file=jbake-${version}/jbake-core.jar;archive=${url}" ~ s"zip:regex=jbake-${version}/lib/.*[.][Jj][Aa][Rr];archive=${url}"
   }
   /**
    * A locally installed (or at least unpacked) JBake.
