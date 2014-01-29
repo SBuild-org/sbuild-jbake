@@ -1,4 +1,5 @@
 = SBuild Adept Plugin
+:pluginversion: 0.1.1
 
 This SBuild plugin integrates http://jbake.org[JBake] with http://sbuild.tototec.de[SBuild].
 
@@ -9,8 +10,9 @@ SBuild JBake Plugin can be downloaded from http://repo1.maven.org/maven2/org/sbu
 To include it in you SBuild buildfile use the `@classpath` annotation:
 
 [source,scala]
+[subs="attributes"]
 ----
-@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.1")
+@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:{pluginversion}")
 ----
 
 == Building from Source
@@ -38,11 +40,12 @@ All configurable properties are documented via ScalaDoc. See file link:org.sbuil
 Minimal example, which will generate a jbake site from `src/jbake` to `target/jbake`.
 
 [source,scala]
+[subs="attributes"]
 ----
 import de.tototec.sbuild._
 
 @version("0.7.1.9000")
-@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.1")
+@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:{pluginversion}")
 class SBuild(implicit _project: Project) {
 
   import org.sbuild.plugins.jbake._
@@ -58,7 +61,7 @@ Another example, using JBake 2.2.1 to generate a site from `src/website` to `tar
 import de.tototec.sbuild._
 
 @version("0.7.1.9000")
-@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:0.1.1")
+@classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:{pluginversion}")
 class SBuild(implicit _project: Project) {
 
   import org.sbuild.plugins.jbake._
@@ -78,7 +81,7 @@ class SBuild(implicit _project: Project) {
 * Fixed JBake classpath resolution from ZIP files (wrong regex).
 * Added JBakeVersion.Classpath to allow customized JBake runtimes.
 * Added convenient contructor method for `JBakeVersion.Packaged` supporting
-  the typical use case: downloading and using JBake from `jbake.org`. 
+  the typical use case: downloading and using JBake from http://jbake.org. 
 
 === SBuild JBake Plugin 0.1.0 - 2014-01-24
 
