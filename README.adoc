@@ -57,6 +57,7 @@ class SBuild(implicit _project: Project) {
 Another example, using JBake 2.2.1 to generate a site from `src/website` to `target`.
 
 [source,scala]
+[subs="attributes"]
 ----
 import de.tototec.sbuild._
 
