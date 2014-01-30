@@ -1,7 +1,7 @@
-= SBuild Adept Plugin
+= SBuild JBake Plugin
 :pluginversion: 0.1.1
 
-This SBuild plugin integrates http://jbake.org[JBake] with http://sbuild.tototec.de[SBuild].
+This SBuild Plugin integrates http://jbake.org[JBake] with http://sbuild.tototec.de[SBuild].
 
 == Download
 
