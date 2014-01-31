@@ -1,7 +1,10 @@
 = SBuild JBake Plugin
 :pluginversion: 0.1.1
+:toc:
 
 This SBuild Plugin integrates http://jbake.org[JBake] with http://sbuild.tototec.de[SBuild].
+
+toc::[]
 
 == Download
 
@@ -38,10 +41,12 @@ All configurable properties are documented via ScalaDoc. See file link:org.sbuil
 == Targets
 
 In it's default configuration, this plugin will provide the following targets:
+
 * *jbake* - bake the site
 * *serve-jbake* - start a local web server on port 8820. This target will depend on the *jbake* target
 
 If you create a named plugin instance, the generated targets are:
+
 * *jbake-${name}* - bake the site
 * *serve-jbake-${name}* - start a local web server on port 8820. This target will depend on the *jbake-${name}* target
 
