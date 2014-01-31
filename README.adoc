@@ -48,8 +48,7 @@ import de.tototec.sbuild._
 @classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:{pluginversion}")
 class SBuild(implicit _project: Project) {
 
-  import org.sbuild.plugins.jbake._
-  Plugin[JBake]
+  Plugin[org.sbuild.plugins.jbake.JBake]
 
 }
 ----
