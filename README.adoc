@@ -35,6 +35,16 @@ This plugin requires at least SBuild 0.7.1.9000.
 
 All configurable properties are documented via ScalaDoc. See file link:org.sbuild.plugins.jbake/src/main/scala/org/sbuild/plugins/jbake/JBake.scala[`JBake.scala`].
 
+== Targets
+
+In it's default configuration, this plugin will provide the following targets:
+* *jbake* - bake the site
+* *serve-jbake* - start a local web server on port 8820. This target will depend on the *jbake* target
+
+If you create a named plugin instance, the generated targets are:
+* *jbake-${name}* - bake the site
+* *serve-jbake-${name}* - start a local web server on port 8820. This target will depend on the *jbake-${name}* target
+
 == Examples
 
 Minimal example, which will generate a jbake site from `src/jbake` to `target/jbake`.
