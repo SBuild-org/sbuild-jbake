@@ -93,7 +93,7 @@ class SBuild(implicit _project: Project) {
 
 == Changelog
 
-=== SBuild JBake Plugin 0.1.2
+=== SBuild JBake Plugin 0.1.2 - 2014-02-04
 
 * Added optional "init-jbake" target to create the initial project layout.
 
