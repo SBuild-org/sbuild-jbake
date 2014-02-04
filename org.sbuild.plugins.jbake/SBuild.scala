@@ -15,7 +15,7 @@ import de.tototec.sbuild._
 class SBuild(implicit _project: Project) {
 
   val namespace = "org.sbuild.plugins.jbake"
-  val version = "0.1.1.9000"
+  val version = "0.1.2"
   val url = "https://github.com/SBuild-org/sbuild-jbake"
   val sourcesJar = s"target/${namespace}-${version}-sources.jar"
   val sourcesDir = "src/main/scala"

@@ -25,9 +25,11 @@ class JBakePlugin(implicit project: Project) extends Plugin[JBake] {
     case (name, jbake) =>
 
       val jbakeCp = jbake.jbakeVersion.classpath
-      val deps = s"scan:${jbake.sourceDir.getPath}"
+      val sourceFiles = s"scan:${jbake.sourceDir.getPath}"
 
-      Target(s"phony:${jbake.bakeTargetName}") dependsOn jbakeCp ~ deps exec {
+      // TODO: make bake cacheable
+
+      Target(s"phony:${jbake.bakeTargetName}") dependsOn jbakeCp ~ sourceFiles exec {
         jbake.targetDir.mkdirs
         ForkSupport.runJavaAndWait(
           classpath = jbakeCp.files,
@@ -47,8 +49,7 @@ class JBakePlugin(implicit project: Project) extends Plugin[JBake] {
       jbake.jbakeVersion.baseZip match {
         case None => // no init possible
         case Some(baseZip) =>
-          val sourceFiles = s"scan:${jbake.sourceDir}"
-          Target(s"phony:${jbake.initTargetName}") dependsOn baseZip ~~ sourceFiles exec {
+          Target(s"phony:${jbake.initTargetName}") dependsOn baseZip ~ sourceFiles exec {
             if (!sourceFiles.files.isEmpty) {
               throw new RuntimeException(s"Source directory ${jbake.sourceDir} is not empty. Abort initializing a fresh JBake project layout.")
             }

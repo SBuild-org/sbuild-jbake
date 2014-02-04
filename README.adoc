@@ -1,5 +1,5 @@
 = SBuild JBake Plugin
-:pluginversion: 0.1.1.9000
+:pluginversion: 0.1.2
 :toc:
 
 This SBuild Plugin integrates http://jbake.org[JBake] with http://sbuild.tototec.de[SBuild].
@@ -93,7 +93,7 @@ class SBuild(implicit _project: Project) {
 
 == Changelog
 
-=== SBuild JBake Plugin 0.1.1.9000
+=== SBuild JBake Plugin 0.1.2
 
 * Added optional "init-jbake" target to create the initial project layout.
 
