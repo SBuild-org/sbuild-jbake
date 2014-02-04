@@ -1,5 +1,5 @@
 = SBuild JBake Plugin
-:pluginversion: 0.1.1
+:pluginversion: 0.1.1.9000
 :toc:
 
 This SBuild Plugin integrates http://jbake.org[JBake] with http://sbuild.tototec.de[SBuild].
@@ -44,11 +44,13 @@ In it's default configuration, this plugin will provide the following targets:
 
 * *jbake* - bake the site
 * *serve-jbake* - start a local web server on port 8820. This target will depend on the *jbake* target
+* *init-jbake* (optional) - create an initial JBake source directory layout with style, layout, and example files
 
 If you create a named plugin instance, the generated targets are:
 
 * *jbake-${name}* - bake the site
 * *serve-jbake-${name}* - start a local web server on port 8820. This target will depend on the *jbake-${name}* target
+* *init-jbake-${name}* (optional) - create an initial JBake source directory layout with style, layout, and example files
 
 == Examples
 
@@ -90,6 +92,10 @@ class SBuild(implicit _project: Project) {
 ----
 
 == Changelog
+
+=== SBuild JBake Plugin 0.1.1.9000
+
+* Added optional "init-jbake" target to create the initial project layout.
 
 === SBuild JBake Plugin 0.1.1 - 2014-01-28
 

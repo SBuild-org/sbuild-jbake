@@ -13,11 +13,13 @@ import java.io.File
  * @param targetDir Directory, where all generated files will be stored.
  * @param jbakeVersion The JBake version used.
  *   See `[[JBakeVersion]]` for details.
+ * @param initTargetName Name of the optional target that will initialize the project layout.
  */
 case class JBake(
   bakeTargetName: String,
   serveTargetName: String,
   sourceDir: File,
   targetDir: File,
-  jbakeVersion: JBakeVersion = JBakeVersion.JBake_2_2_1)
+  jbakeVersion: JBakeVersion = JBakeVersion.JBake_2_2_1,
+  initTargetName: String)
 

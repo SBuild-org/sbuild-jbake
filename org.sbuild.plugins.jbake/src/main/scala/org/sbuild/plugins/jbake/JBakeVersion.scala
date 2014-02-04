@@ -2,9 +2,7 @@ package org.sbuild.plugins.jbake
 
 import java.io.File
 
-import de.tototec.sbuild.Project
-import de.tototec.sbuild.TargetRefs
-import de.tototec.sbuild.TargetRefs.fromString
+import de.tototec.sbuild._
 
 /**
  * A configuration of a JBake instance.
@@ -16,7 +14,10 @@ import de.tototec.sbuild.TargetRefs.fromString
  * Note, there are also some predefined versions available in `[[JBakeVersion$]]`.
  */
 sealed trait JBakeVersion {
+  /** The classpath to load JBake form. */
   def classpath(implicit p: Project): TargetRefs
+  /** The `base.zip` file, use to create an initial project layout. */
+  def baseZip(implicit p: Project): Option[TargetRef]
 }
 
 object JBakeVersion {
@@ -35,6 +36,7 @@ object JBakeVersion {
    */
   case class Packaged(version: String, url: String) extends JBakeVersion {
     override def classpath(implicit p: Project): TargetRefs = s"zip:file=jbake-${version}/jbake-core.jar;archive=${url}" ~ s"zip:regex=jbake-${version}/lib/.*[.][Jj][Aa][Rr];archive=${url}"
+    override def baseZip(implicit p: Project): Option[TargetRef] = Some(s"zip:file=jbake-${version}/base.zip;archive=${url}")
   }
   /**
    * A locally installed (or at least unpacked) JBake.
@@ -43,14 +45,17 @@ object JBakeVersion {
    */
   case class Local(homeDir: File) extends JBakeVersion {
     override def classpath(implicit p: Project): TargetRefs = s"${homeDir}/jbake-core.jar" ~ s"scan:${homeDir}/lib;regex=.*\.jar"
+    override def baseZip(implicit p: Project): Option[TargetRef] = Some( s"${homeDir}/base.zip")
   }
   /**
    * The JBake runtime is completely resolved from the given `explicitClasspath`.
    *
    * @param explicitClasspath The classpath, from where the JBake runtime will be loaded.
+   * @param explicitBaseZip The ZIP file containing the initial project layout.
    */
-  case class Classpath(explicitClasspath: TargetRefs) extends JBakeVersion {
+  case class Classpath(explicitClasspath: TargetRefs, explicitBaseZip: Option[TargetRef] = None) extends JBakeVersion {
     override def classpath(implicit p: Project): TargetRefs = explicitClasspath
+    override def baseZip(implicit p: Project): Option[TargetRef] = explicitBaseZip
   }
 
   /** JBake 2.2.0 */

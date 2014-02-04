@@ -15,7 +15,8 @@ class JBakePlugin(implicit project: Project) extends Plugin[JBake] {
       bakeTargetName = if (name == "") "jbake" else s"jbake-${name}",
       serveTargetName = if (name == "") "serve-jbake" else s"serve-jbake-${name}",
       sourceDir = Path("src") / (if (name == "") "jbake" else s"jbake-${name}"),
-      targetDir = Path("target") / (if (name == "") "jbake" else s"site-${name}")
+      targetDir = Path("target") / (if (name == "") "jbake" else s"site-${name}"),
+      initTargetName = if (name == "") "init-jbake" else s"init-jbake-${name}"
     )
     jbake
   }
@@ -26,7 +27,7 @@ class JBakePlugin(implicit project: Project) extends Plugin[JBake] {
       val jbakeCp = jbake.jbakeVersion.classpath
       val deps = s"scan:${jbake.sourceDir.getPath}"
 
-      Target("phony:" + jbake.bakeTargetName) dependsOn jbakeCp ~ deps exec {
+      Target(s"phony:${jbake.bakeTargetName}") dependsOn jbakeCp ~ deps exec {
         jbake.targetDir.mkdirs
         ForkSupport.runJavaAndWait(
           classpath = jbakeCp.files,
@@ -35,13 +36,26 @@ class JBakePlugin(implicit project: Project) extends Plugin[JBake] {
         )
       }
 
-      Target("phony:" + jbake.serveTargetName) dependsOn jbakeCp ~ jbake.bakeTargetName exec {
+      Target(s"phony:${jbake.serveTargetName}") dependsOn jbakeCp ~ jbake.bakeTargetName exec {
         ForkSupport.runJavaAndWait(
           classpath = jbakeCp.files,
           arguments = Array("org.jbake.launcher.Main", "-s", jbake.targetDir.getPath),
           failOnError = true
         )
+      }
+
+      jbake.jbakeVersion.baseZip match {
+        case None => // no init possible
+        case Some(baseZip) =>
+          val sourceFiles = s"scan:${jbake.sourceDir}"
+          Target(s"phony:${jbake.initTargetName}") dependsOn baseZip ~~ sourceFiles exec {
+            if (!sourceFiles.files.isEmpty) {
+              throw new RuntimeException(s"Source directory ${jbake.sourceDir} is not empty. Abort initializing a fresh JBake project layout.")
+            }
+            de.tototec.sbuild.internal.Util.unzip(baseZip.files.head, jbake.sourceDir)
+          }
 
       }
+
   }
 }
