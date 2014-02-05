@@ -1,10 +1,10 @@
 = SBuild JBake Plugin
 :pluginversion: 0.1.2
 :toc:
+:toc-placement: preamble
+:toclevels: 1
 
 This SBuild Plugin integrates http://jbake.org[JBake] with http://sbuild.tototec.de[SBuild].
-
-toc::[]
 
 == Download
 
