@@ -31,19 +31,21 @@ class JBakePlugin(implicit project: Project) extends Plugin[JBake] {
 
       Target(s"phony:${jbake.bakeTargetName}") dependsOn jbakeCp ~ sourceFiles exec {
         jbake.targetDir.mkdirs
-        ForkSupport.runJavaAndWait(
+        val retVal = ForkSupport.runJavaAndWait(
           classpath = jbakeCp.files,
           arguments = Array("org.jbake.launcher.Main", jbake.sourceDir.getPath, jbake.targetDir.getPath),
           failOnError = true
         )
+        if(retVal != 0) throw new RuntimeException(s"jbake returned with exit code ${retVal}")
       }
 
       Target(s"phony:${jbake.serveTargetName}") dependsOn jbakeCp ~ jbake.bakeTargetName exec {
-        ForkSupport.runJavaAndWait(
+        val retVal = ForkSupport.runJavaAndWait(
           classpath = jbakeCp.files,
           arguments = Array("org.jbake.launcher.Main", "-s", jbake.targetDir.getPath),
           failOnError = true
         )
+        if(retVal != 0) throw new RuntimeException(s"jbake returned with exit code ${retVal}")
       }
 
       jbake.jbakeVersion.baseZip match {
