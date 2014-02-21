@@ -93,6 +93,10 @@ class SBuild(implicit _project: Project) {
 
 == Changelog
 
+=== SBuild JBake Plugin 0.1.3 - _not released yet_
+
+* Evaluate return code of jbake process and fail the task accordingly.
+
 === SBuild JBake Plugin 0.1.2 - 2014-02-04
 
 * Added optional "init-jbake" target to create the initial project layout.
