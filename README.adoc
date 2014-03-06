@@ -1,5 +1,6 @@
 = SBuild JBake Plugin
 :pluginversion: 0.1.2
+:sbuildversion: 0.7.2
 :toc:
 :toc-placement: preamble
 :toclevels: 1
@@ -32,7 +33,7 @@ You will find the built jar in the directory `org.sbuild.plugins.jbake/target`.
 
 == Requirements
 
-This plugin requires at least SBuild 0.7.1.9000.
+This plugin requires at least SBuild {sbuildversion}.
 
 == Configuration
 
@@ -56,12 +57,11 @@ If you create a named plugin instance, the generated targets are:
 
 Minimal example, which will generate a jbake site from `src/jbake` to `target/jbake`.
 
-[source,scala]
-[subs="attributes"]
+[source,scala,subs="attributes"]
 ----
 import de.tototec.sbuild._
 
-@version("0.7.1.9000")
+@version("{sbuildversion}")
 @classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:{pluginversion}")
 class SBuild(implicit _project: Project) {
 
@@ -72,12 +72,11 @@ class SBuild(implicit _project: Project) {
 
 Another example, using JBake 2.2.1 to generate a site from `src/website` to `target`.
 
-[source,scala]
-[subs="attributes"]
+[source,scala,subs="attributes"]
 ----
 import de.tototec.sbuild._
 
-@version("0.7.1.9000")
+@version("{sbuildversion}")
 @classpath("mvn:org.sbuild:org.sbuild.plugins.jbake:{pluginversion}")
 class SBuild(implicit _project: Project) {
 
